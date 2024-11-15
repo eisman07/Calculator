@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        h1 {
+            margin-top: 20px;
+        }
+        table {
+            width: 80%;
+            margin: 20px 0;
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+        }
+        th {
+            background-color: #f2f2f2;
+            text-align: left;
+        }
+        td {
+            text-align: center;
+        }
+        .input-form {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            width: 80%;
+            justify-content: space-between;
+        }
+        .input-form input {
+            padding: 8px;
+            flex: 1 1 150px;
+        }
+        .input-form button {
+            padding: 8px 12px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            flex: 1 1 100px;
+        }
+        .input-form button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+<h1>HTML Datenbank</h1>
+
+<div class="input-form">
+    <input type="text" id="id" placeholder="ID">
+    <input type="text" id="marke" placeholder="Marke">
+    <input type="text" id="beschreibung" placeholder="Beschreibung">
+    <input type="number" id="preis" placeholder="Preis (€)">
+    <input type="number" id="shipping" placeholder="Shipping (€)">
+    <input type="number" id="gewinn" placeholder="Gewinn (€)">
+    <input type="text" id="kunde" placeholder="Kunde">
+    <button onclick="addEntry()">Eintrag hinzufügen</button>
+</div>
+
+<table id="dataTable">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Marke</th>
+            <th>Beschreibung</th>
+            <th>Preis (€)</th>
+            <th>Shipping (€)</th>
+            <th>Gewinn (€)</th>
+            <th>Kunde</th>
+        </tr>
+    </thead>
+    <tbody>
+        <!-- Neue Einträge werden hier hinzugefügt -->
+    </tbody>
+</table>
+
+<script>
+    function addEntry() {
+        const id = document.getElementById("id").value;
+        const marke = document.getElementById("marke").value;
+        const beschreibung = document.getElementById("beschreibung").value;
+        const preis = document.getElementById("preis").value;
+        const shipping = document.getElementById("shipping").value;
+        const gewinn = document.getElementById("gewinn").value;
+        const kunde = document.getElementById("kunde").value;
+
+        if (!id || !marke || !beschreibung || !preis || !shipping || !gewinn || !kunde) {
+            alert("Bitte füllen Sie alle Felder aus.");
+            return;
+        }
+
+        const table = document.getElementById("dataTable").getElementsByTagName("tbody")[0];
+        const newRow = table.insertRow();
+
+        newRow.insertCell(0).innerText = id;
+        newRow.insertCell(1).innerText = marke;
+        newRow.insertCell(2).innerText = beschreibung;
+        newRow.insertCell(3).innerText = preis;
+        newRow.insertCell(4).innerText = shipping;
+        newRow.insertCell(5).innerText = gewinn;
+        newRow.insertCell(6).innerText = kunde;
+
+        // Felder leeren nach Hinzufügen
+        document.getElementById("id").value = '';
+        document.getElementById("marke").value = '';
+        document.getElementById("beschreibung").value = '';
+        document.getElementById("preis").value = '';
+        document.getElementById("shipping").value = '';
+        document.getElementById("gewinn").value = '';
+        document.getElementById("kunde").value = '';
+    }
+</script>
+
+</body>
+</html>
